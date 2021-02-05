@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.dataretrieveapp"
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    realm {
+        syncEnabled = true
+    }
+
+    buildTypes {
+
+        /*
+        def mongoDBRealmUrl = "https://realm.mongodb.com"
+        def mongoDBRealmAppId = "bioinfoapp-yrwzg"
+
+        debug{
+            buildConfigField "String", "MONGODB_REALM_URL", "\",${mongoDBRealmUrl}\""
+            buildConfigField "String", "MONGODB_REALM_APP_ID", "\",${mongoDBRealmAppId}\""
+        }
+
+        release {
+            buildConfigField "String", "MONGODB_REALM_URL", "\",${mongoDBRealmUrl}\""
+            buildConfigField "String", "MONGODB_REALM_APP_ID", "\",${mongoDBRealmAppId}\""
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        */
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
