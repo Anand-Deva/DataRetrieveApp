@@ -44,8 +44,15 @@ public class inventoryActivity extends AppCompatActivity{
                     Log.v("MongoDB Realm", "Successfully opened a realm");
                     RealmResults<BioInfo> results =  realm.where(BioInfo.class)
                                                     .equalTo("lastName", "Doe").findAll();
+
+                    RealmResults<BioInfoCollection> otherResutls =  realm.where(BioInfoCollection.class)
+                            .equalTo("lastName", "Doe").findAll();
+
                     Log.i("MongoDB Query", results.toString());
+                    Log.i("MongoDB Query", otherResutls.toString());
+
                     Toast.makeText(getApplicationContext(),user+ ":" + results.toString(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),user+ ":" + otherResutls.toString(),Toast.LENGTH_LONG).show();
                 }
             });
         }
